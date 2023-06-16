@@ -78,6 +78,13 @@ async function run() {
       const result = await buyAndSellsCollection.insertOne(postResult);
       res.send(result);
     });
+    // Get Buy and sells
+    app.get('/buyAndSells', async (req, res) => {
+      const query = {};
+      const cursor = buyAndSellsCollection.find(query);
+      const result = await cursor.toArray();
+      res.send(result);
+    });
 
     // // restock blood item and update
     // app.put('/userId/:id', async (req, res) => {
