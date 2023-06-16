@@ -25,14 +25,14 @@ async function run() {
   try {
     await client.connect();
 
-    
     // console.log("database connect");
-    // const userCollection = client.db('blood-bank').collection('user');
-    // const bloodsCollection = client.db('blood-bank').collection('bloods');
-    // const buyBloodsCollection = client.db('blood-bank').collection('buyBloods');
-    // const donateBloodCollection = client
-    //   .db('blood-bank')
-    //   .collection('donateBlood');
+    const userCollection = client
+      .db('agriculture-e-commerce')
+      .collection('user');
+    const buyAndSellsCollection = client
+      .db('agriculture-e-commerce')
+      .collection('buyAndSells');
+
     // //   // // // // // // // // // // // //
 
     // // create and update User
@@ -70,6 +70,15 @@ async function run() {
     //   const user = await cursor.toArray();
     //   res.send(user);
     // });
+
+    // Buy and sells
+    // post Buy and sells
+    app.post('/buyAndSells', async (req, res) => {
+      const postResult = req.body;
+      const result = await buyAndSellsCollection.insertOne(postResult);
+      res.send(result);
+    });
+
     // // restock blood item and update
     // app.put('/userId/:id', async (req, res) => {
     //   const id = req.params.id;
