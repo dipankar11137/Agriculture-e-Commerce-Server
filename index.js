@@ -11,9 +11,8 @@ app.use(cors());
 app.use(express.json());
 
 
-// const uri = `mongodb+srv://blood_bank:ydQqlxj3DGqlPHYk@cluster0.gxqkllr.mongodb.net/?retryWrites=true&w=majority`;
 const uri =
-  'mongodb+srv://agriculture_e_commerce:<password>@cluster0.3hcpsfc.mongodb.net/?retryWrites=true&w=majority';
+  'mongodb+srv://agriculture_e_commerce:nkTxK9tTPSkdZ8xL@cluster0.3hcpsfc.mongodb.net/?retryWrites=true&w=majority';
 
 
 const client = new MongoClient(uri, {
