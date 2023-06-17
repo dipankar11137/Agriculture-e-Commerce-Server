@@ -56,12 +56,12 @@ async function run() {
       res.send(result);
     });
     // get user
-    // app.get('/user', async (req, res) => {
-    //   const query = {};
-    //   const cursor = userCollection.find(query);
-    //   const result = await cursor.toArray();
-    //   res.send(result);
-    // });
+    app.get('/user', async (req, res) => {
+      const query = {};
+      const cursor = userCollection.find(query);
+      const result = await cursor.toArray();
+      res.send(result);
+    });
     // // all User filter by email category
     app.get('/user/:email', async (req, res) => {
       const email = req.params.email;
