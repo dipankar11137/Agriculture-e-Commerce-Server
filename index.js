@@ -55,21 +55,21 @@ async function run() {
       );
       res.send(result);
     });
-    // // get user
-    // app.get('/user', async (req, res) => {
-    //   const query = {};
-    //   const cursor = userCollection.find(query);
-    //   const result = await cursor.toArray();
-    //   res.send(result);
-    // });
-    // // // all User filter by email category
-    // app.get('/user/:email', async (req, res) => {
-    //   const email = req.params.email;
-    //   const query = { email };
-    //   const cursor = userCollection.find(query);
-    //   const user = await cursor.toArray();
-    //   res.send(user);
-    // });
+    // get user
+    app.get('/user', async (req, res) => {
+      const query = {};
+      const cursor = userCollection.find(query);
+      const result = await cursor.toArray();
+      res.send(result);
+    });
+    // // all User filter by email category
+    app.get('/user/:email', async (req, res) => {
+      const email = req.params.email;
+      const query = { email };
+      const cursor = userCollection.find(query);
+      const user = await cursor.toArray();
+      res.send(user);
+    });
 
     // Buy and sells
     // post Buy and sells
