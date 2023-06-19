@@ -149,6 +149,20 @@ async function run() {
       const result = await buyCollection.findOne(query);
       res.send(result);
     });
+    // restock buy blood item and update payment
+    app.put('/buyPayment/:id', async (req, res) => {
+      const id = req.params.id;
+      const updatePayment = req.body;
+      const query = { _id: ObjectId(id) };
+      const options = { upsert: true };
+      const updateDoc = {
+        $set: {
+          payment: updatePayment.payment,
+        },
+      };
+      const result = await buyCollection.updateOne(query, updateDoc, options);
+      res.send(result);
+    });
     // // Delete one buy
     app.delete('/buy/:id', async (req, res) => {
       const id = req.params.id;
