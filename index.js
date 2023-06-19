@@ -32,6 +32,7 @@ async function run() {
     const buyAndSellsCollection = client
       .db('agriculture-e-commerce')
       .collection('buyAndSells');
+    const buyCollection = client.db('agriculture-e-commerce').collection('buy');
 
     // //   // // // // // // // // // // // //
 
@@ -126,7 +127,13 @@ async function run() {
       res.send(result);
     });
 
-    // buy items
+    //                         buy items
+    // post buy
+    app.post('/buy', async (req, res) => {
+      const postResult = req.body;
+      const result = await buyCollection.insertOne(postResult);
+      res.send(result);
+    });
 
     // // get buy filter by email
     // app.get('/buyBlood/:email', async (req, res) => {
