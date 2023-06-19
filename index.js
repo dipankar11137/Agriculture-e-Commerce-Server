@@ -142,6 +142,13 @@ async function run() {
       const result = await cursor.toArray();
       res.send(result);
     });
+    // get blood by id
+    app.get('/buy/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const result = await buyCollection.findOne(query);
+      res.send(result);
+    });
     // // Delete one buy
     app.delete('/buy/:id', async (req, res) => {
       const id = req.params.id;
