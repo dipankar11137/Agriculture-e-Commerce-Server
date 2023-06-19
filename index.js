@@ -85,6 +85,13 @@ async function run() {
       const result = await cursor.toArray();
       res.send(result);
     });
+    // // Delete one buy blood
+    app.delete('/buyAndSells/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const result = await buyAndSellsCollection.deleteOne(query);
+      res.send(result);
+    });
 
     // // restock blood item and update
     // app.put('/userId/:id', async (req, res) => {
