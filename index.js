@@ -92,6 +92,14 @@ async function run() {
       const result = await buyAndSellsCollection.findOne(query);
       res.send(result);
     });
+    // // get buy filter by category
+    app.get('/buyAndSell/:category', async (req, res) => {
+      const category = req.params.category;
+      const query = { category };
+      const cursor = buyAndSellsCollection.find(query);
+      const result = await cursor.toArray();
+      res.send(result);
+    });
     // restock Product item and update
     app.put('/buyAndSellsUpdate/:id', async (req, res) => {
       const id = req.params.id;
@@ -117,6 +125,17 @@ async function run() {
       const result = await buyAndSellsCollection.deleteOne(query);
       res.send(result);
     });
+
+    // buy items
+
+    // // get buy filter by email
+    // app.get('/buyBlood/:email', async (req, res) => {
+    //   const email = req.params.email;
+    //   const query = { email };
+    //   const cursor = buyBloodsCollection.find(query);
+    //   const user = await cursor.toArray();
+    //   res.send(user);
+    // });
 
     // // restock blood item and update
     // app.put('/userId/:id', async (req, res) => {
