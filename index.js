@@ -85,6 +85,13 @@ async function run() {
       const result = await cursor.toArray();
       res.send(result);
     });
+    // get blood by id
+    app.get('/buyAndSells/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const result = await buyAndSellsCollection.findOne(query);
+      res.send(result);
+    });
     // // Delete one buy blood
     app.delete('/buyAndSells/:id', async (req, res) => {
       const id = req.params.id;
