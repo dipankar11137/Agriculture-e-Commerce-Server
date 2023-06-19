@@ -149,6 +149,14 @@ async function run() {
       const result = await buyCollection.findOne(query);
       res.send(result);
     });
+    // get buy filter by email
+    app.get('/buys/:email', async (req, res) => {
+      const email = req.params.email;
+      const query = { email };
+      const cursor = buyCollection.find(query);
+      const user = await cursor.toArray();
+      res.send(user);
+    });
     // restock buy blood item and update payment
     app.put('/buyPayment/:id', async (req, res) => {
       const id = req.params.id;
