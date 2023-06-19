@@ -103,7 +103,7 @@ async function run() {
           quantity: updateQuantity.quantity,
         },
       };
-      const result = await bloodsCollection.updateOne(
+      const result = await buyAndSellsCollection.updateOne(
         query,
         updateDoc,
         options
