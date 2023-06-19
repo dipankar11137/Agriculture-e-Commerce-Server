@@ -119,7 +119,7 @@ async function run() {
       );
       res.send(result);
     });
-    // // Delete one buy blood
+    // // Delete one item
     app.delete('/buyAndSells/:id', async (req, res) => {
       const id = req.params.id;
       const query = { _id: ObjectId(id) };
@@ -132,6 +132,21 @@ async function run() {
     app.post('/buy', async (req, res) => {
       const postResult = req.body;
       const result = await buyCollection.insertOne(postResult);
+      res.send(result);
+    });
+
+    // Get Buy
+    app.get('/buy', async (req, res) => {
+      const query = {};
+      const cursor = buyCollection.find(query);
+      const result = await cursor.toArray();
+      res.send(result);
+    });
+    // // Delete one buy
+    app.delete('/buy/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const result = await buyCollection.deleteOne(query);
       res.send(result);
     });
 
